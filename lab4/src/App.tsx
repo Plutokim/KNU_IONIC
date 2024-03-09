@@ -1,4 +1,4 @@
-import { Redirect, Route } from "react-router-dom";
+import { Redirect, Route, useLocation } from "react-router-dom";
 import {
   IonApp,
   IonIcon,
@@ -43,6 +43,7 @@ setupIonicReact();
 
 const App: React.FC = () => (
   <IonApp>
+    <Menu />
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
@@ -55,7 +56,7 @@ const App: React.FC = () => (
           <Route path="/lab1/task3">
             <Tab3 />
           </Route>
-          <Route path="/lab2/graph">
+          <Route path="/lab2">
             <Graph />
           </Route>
           <Route path="/lab3">
@@ -65,23 +66,19 @@ const App: React.FC = () => (
             <Lab4 />
           </Route>
           <Route exact path="/">
-            <Redirect to="/lab1/task1" />
+            <Redirect to="lab1/task1" />
           </Route>
         </IonRouterOutlet>
-        <IonMenu side="start" menuId="first" contentId="main">
-          <Menu />
-        </IonMenu>
-
         <IonTabBar slot="bottom">
-          <IonTabButton tab="task1" href="/task1">
+          <IonTabButton tab="task1" href="/lab1/task1">
             <IonIcon aria-hidden="true" icon={triangle} />
             <IonLabel>Task 1</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="task2" href="/task2">
+          <IonTabButton tab="task2" href="/lab1/task2">
             <IonIcon aria-hidden="true" icon={ellipse} />
             <IonLabel>Task 2</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="task3" href="/task3">
+          <IonTabButton tab="task3" href="/lab1/task3">
             <IonIcon aria-hidden="true" icon={square} />
             <IonLabel>Task 3</IonLabel>
           </IonTabButton>

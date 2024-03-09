@@ -8,9 +8,9 @@ import {
 
 type Props = {
   indx?: number;
-}
+};
 
-export const Header = ({indx = 1}:Props) => (
+export const Header = ({ indx = 1 }: Props) => (
   <IonHeader>
     <IonToolbar style={{ padding: "10px" }}>
       <IonTitle>Лабораторна робота #{indx}</IonTitle>
@@ -21,7 +21,7 @@ export const Header = ({indx = 1}:Props) => (
     </IonToolbar>
     <IonToolbar>
       <IonButtons slot="start">
-        <IonMenuButton>cddccdcd</IonMenuButton>
+        <IonMenuButton />
       </IonButtons>
       <IonTitle>Лабораторні роботи</IonTitle>
     </IonToolbar>

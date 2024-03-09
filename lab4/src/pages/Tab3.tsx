@@ -44,7 +44,7 @@ const Tab3: React.FC = () => {
   };
 
   return (
-    <IonPage>
+    <IonPage id="main">
       <Header />
       <IonContent fullscreen>
         <p>

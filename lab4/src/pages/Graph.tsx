@@ -21,8 +21,8 @@ import "./Graph.css";
 import { Header } from "../components/header";
 import { useState } from "react";
 import { Line } from "react-chartjs-2";
-import img1 from "../../public/lab2.1.png";
-import img2 from "../../public/lab2.2.png";
+import img1 from "/lab2.1.png";
+import img2 from "/lab2.2.png";
 
 ChartJS.register(
   CategoryScale,
@@ -106,7 +106,7 @@ const Graph: React.FC = () => {
   };
 
   return (
-    <IonPage>
+    <IonPage id="main">
       <Header indx={2} />
       <IonContent fullscreen>
         <p>

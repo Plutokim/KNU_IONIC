@@ -10,7 +10,7 @@ import {
 import "./Tab1.css";
 import { Header } from "../components/header";
 import { ReactElement, useState } from "react";
-import imgSrc from "../../public/lab4.png";
+import imgSrc from "/lab4.png";
 import { Prism } from "../classes/Prism";
 import { TriangularPrism } from "../classes/Prism/TriangularPrism";
 import { QuadrilateralPrism } from "../classes/Prism/QuadrilateralPrism";
