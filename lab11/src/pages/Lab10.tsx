@@ -7,32 +7,52 @@ import City from "../classes/rxjs/City";
 import EnterpriseList from "../classes/rxjs/Enterprise/List";
 import Enterprise from "../classes/rxjs/Enterprise";
 import { useEffect, useMemo, useState } from "react";
+import dbApi from "../api/db";
 
 const Lab10: React.FC = () => {
-  const cityList = useMemo(() => new CityList(), []);
+  const api = dbApi;
+  const [listCities, setListCities] = useState([]);
+  const [listEnterprises, setListEnterprises] = useState([]);
+  const cityList = useMemo(() => new CityList(api, listCities), [listCities]);
   const controller = useMemo(() => new Controller(cityList.first), [cityList]);
   const enterpriseList = useMemo(
-    () => new EnterpriseList(controller),
-    [controller]
+    () => new EnterpriseList(controller, api, listEnterprises),
+    [controller, listEnterprises]
   );
   const [city, setCity] = useState(cityList.first);
   useEffect(() => {
     const sub = controller.city$.subscribe(setCity);
     return () => sub.unsubscribe();
-  }, []);
-  const addCity = (name: string) => {
-    cityList.add(new City(cityList.list.length, name));
+  }, [listCities, listEnterprises]);
+  const addCity = async (name: string) => {
+    const city = new City(cityList.list.length, name);
+    await cityList.add(city);
   };
   const [data, setData] = useState(enterpriseList.dataList);
+  useEffect(() => {
+    const fetchCities = async () => {
+      const cities = await api.listCities();
+      setListCities(cities);
+    };
+    const fetchEnterprises = async () => {
+      const enterprises = await api.listEnterprises();
+      setListEnterprises(enterprises);
+    };
+    fetchCities();
+    fetchEnterprises();
+  }, []);
 
-  const addEnterprise = (
+  useEffect(() => {
+    setData(enterpriseList.dataList);
+  }, [listCities, listEnterprises]);
+  const addEnterprise = async (
     name: string,
     owner: string,
     employees_count: number,
     revenue: number,
     category: string
   ) => {
-    enterpriseList.add(
+    await enterpriseList.add(
       new Enterprise(name, owner, employees_count, revenue, category, city.code)
     );
   };
@@ -49,7 +69,7 @@ const Lab10: React.FC = () => {
       <IonContent fullscreen>
         <p>Довідник міст та список підприємств різних міст</p>
         <hr />
-        <p>Місто: {city.name}</p>
+        <p>Місто: {city?.name}</p>
         <div>
           <p>Підприємництва</p>
           {data.map((enterprise, indx) => (
@@ -66,10 +86,11 @@ const Lab10: React.FC = () => {
         <div>
           <h3>Додати нове місто</h3>
           <form
-            onSubmit={(e: any) => {
+            onSubmit={async (e: any) => {
               e.preventDefault();
               const city = e.target.elements.name.value;
-              addCity(city);
+              await addCity(city);
+              console.log("Suceess add city");
             }}
           >
             <label>
@@ -83,14 +104,14 @@ const Lab10: React.FC = () => {
           <h3>Додати нове підприємство</h3>
           <form
             style={{ display: "flex", flexDirection: "column", gap: "10px" }}
-            onSubmit={(e: any) => {
+            onSubmit={async (e: any) => {
               e.preventDefault();
               const name = e.target.elements.name.value;
               const owner = e.target.elements.owner.value;
               const employees_count = e.target.elements.employees_count.value;
               const revenue = e.target.elements.revenue.value;
               const category = e.target.elements.category.value;
-              addEnterprise(
+              await addEnterprise(
                 name,
                 owner,
                 parseInt(employees_count),
@@ -98,6 +119,7 @@ const Lab10: React.FC = () => {
                 category
               );
               setData(enterpriseList.dataList);
+              console.log("Suceess add enterprise");
             }}
           >
             <label>

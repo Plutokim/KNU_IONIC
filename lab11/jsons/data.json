@@ -1,0 +1,122 @@
+{
+    "City": [
+      {
+        "code": 0,
+        "name": "Melitopol"
+      },
+      {
+        "code": 1,
+        "name": "Kyiv"
+      },
+      {
+        "code": 2,
+        "name": "Kharkiv"
+      },
+      {
+        "code": 3,
+        "name": "Lviv"
+      },
+      {
+        "code": 4,
+        "name": "Odessa"
+      }
+    ],
+    "Enterprise": [
+      {
+        "name": "Enterprise1",
+        "owner": "Owner1",
+        "employees_count": 100,
+        "revenue": 1000000,
+        "category": "Technology",
+        "city_code": 0
+      },
+      {
+        "name": "Enterprise2",
+        "owner": "Owner2",
+        "employees_count": 200,
+        "revenue": 2000000,
+        "category": "Finance",
+        "city_code": 1
+      },
+      {
+        "name": "Enterprise3",
+        "owner": "Owner3",
+        "employees_count": 150,
+        "revenue": 1500000,
+        "category": "Healthcare",
+        "city_code": 2
+      },
+      {
+        "name": "Enterprise4",
+        "owner": "Owner4",
+        "employees_count": 300,
+        "revenue": 3000000,
+        "category": "Manufacturing",
+        "city_code": 3
+      },
+      {
+        "name": "Enterprise5",
+        "owner": "Owner5",
+        "employees_count": 250,
+        "revenue": 2500000,
+        "category": "Technology",
+        "city_code": 4
+      },
+      {
+        "name": "Enterprise6",
+        "owner": "Owner6",
+        "employees_count": 200,
+        "revenue": 2000000,
+        "category": "Finance",
+        "city_code": 0
+      },
+      {
+        "name": "Enterprise7",
+        "owner": "Owner7",
+        "employees_count": 150,
+        "revenue": 1500000,
+        "category": "Healthcare",
+        "city_code": 1
+      },
+      {
+        "name": "Enterprise8",
+        "owner": "Owner8",
+        "employees_count": 100,
+        "revenue": 1000000,
+        "category": "Manufacturing",
+        "city_code": 2
+      },
+      {
+        "name": "Enterprise9",
+        "owner": "Owner9",
+        "employees_count": 50,
+        "revenue": 500000,
+        "category": "Technology",
+        "city_code": 3
+      },
+      {
+        "name": "Enterprise10",
+        "owner": "Owner10",
+        "employees_count": 80,
+        "revenue": 800000,
+        "category": "Finance",
+        "city_code": 4
+      },
+      {
+        "name": "Enterprise11",
+        "owner": "Owner11",
+        "employees_count": 120,
+        "revenue": 1200000,
+        "category": "Healthcare",
+        "city_code": 0
+      },
+      {
+        "name": "Enterprise12",
+        "owner": "Owner12",
+        "employees_count": 180,
+        "revenue": 1800000,
+        "category": "Manufacturing",
+        "city_code": 1
+      }
+    ]
+  }
