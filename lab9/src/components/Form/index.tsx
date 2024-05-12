@@ -3,7 +3,7 @@ import withValidators, {
   WithInjectedValidators,
 } from "../../hocs/withValidators";
 
-type Employee = {
+export type Employee = {
   id: number;
   name: string;
   gender: string;
@@ -22,15 +22,17 @@ const defaultEmployee: Employee = {
 };
 
 type Props = {
+  initialEmployee?: Employee;
   onSubmit: (employee: Employee) => void;
 } & WithInjectedValidators;
 
 const EmployeeForm = ({
+  initialEmployee = defaultEmployee,
   onSubmit,
   validateDate,
   validateGender,
 }: Props): ReactElement => {
-  const [employee, setEmployee] = useState<Employee>(defaultEmployee);
+  const [employee, setEmployee] = useState<Employee>(initialEmployee);
   const [dateErr, setDateErr] = useState(false);
   const [genderErr, setGenderErr] = useState(false);
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -150,7 +152,6 @@ const EmployeeForm = ({
                 name={`education-${index}`}
                 value={education}
                 onChange={handleEducationChange}
-                required
               />
               <button
                 onClick={() => handleRemoveEducation(index)}
