@@ -39,6 +39,7 @@ import Graph from "./pages/Graph";
 import Lab3 from "./pages/Lab3";
 import Lab4 from "./pages/Lab4";
 import Lab6 from "./pages/Lab6";
+import Lab7 from "./pages/Lab7";
 
 setupIonicReact();
 
@@ -68,6 +69,9 @@ const App: React.FC = () => (
           </Route>
           <Route path="/lab6">
             <Lab6 />
+          </Route>
+          <Route path="/lab7">
+            <Lab7 />
           </Route>
           <Route exact path="/">
             <Redirect to="/lab1/task1" />
