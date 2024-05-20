@@ -60,9 +60,9 @@ export class DBApi {
     const enterprisesRef = ref(this.db, "Enterprise");
     const snapshot = await get(enterprisesRef);
     if (snapshot.exists()) {
-      return snapshot.val();
+      return Object.values(snapshot.val()) as Enterprise[];
     } else {
-      return null;
+      return [];
     }
   }
 }

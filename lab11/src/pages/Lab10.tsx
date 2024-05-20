@@ -12,7 +12,7 @@ import dbApi from "../api/db";
 const Lab10: React.FC = () => {
   const api = dbApi;
   const [listCities, setListCities] = useState([]);
-  const [listEnterprises, setListEnterprises] = useState([]);
+  const [listEnterprises, setListEnterprises] = useState<Enterprise[]>([]);
   const cityList = useMemo(() => new CityList(api, listCities), [listCities]);
   const controller = useMemo(() => new Controller(cityList.first), [cityList]);
   const enterpriseList = useMemo(
